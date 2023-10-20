@@ -13,6 +13,7 @@ Setup butler
   - Used Darwin (Mac) URL here: https://broth.itch.ovh/butler
 
 Within Godot, make sure to rename the exported file to `index.html`
+I suggest exporting to `./export/html/index.html` and adding `./export/html` to your gitignore.
 
 Within Itch configuration
 
@@ -22,3 +23,11 @@ Within Itch configuration
   > The following features required to run Godot projects on the Web are missing:
   > Cross Origin Isolation - Check web server configuration (send correct headers)
   > SharedArrayBuffer - Check web server configuration (send correct headers)
+
+Use butler to push to itch.io:
+
+```
+butler push export/html nathanleiby/game1:html
+```
+
+(nit: I used `export/web` naming.. will try to change to `html` in future)
