@@ -25,6 +25,10 @@ func _physics_process(delta):
 	# Change XZ direction
 	if direction != Vector3.ZERO:
 		$Pivot.look_at(position + direction, Vector3.UP)
+		# speed up animation when moving
+		$AnimationPlayer.speed_scale = 4
+	else:
+		$AnimationPlayer.speed_scale = 1
 		
 	# Normalize direction vector, so that diagonal movement isn't faster
 	direction = direction.normalized()
@@ -61,6 +65,9 @@ func _physics_process(delta):
 	# Moving
 	velocity = target_velocity
 	move_and_slide()
+	
+	# arc when jumping
+	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 	
 
 func die():

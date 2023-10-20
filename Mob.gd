@@ -21,6 +21,7 @@ func initialize(start_pos, player_pos):
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
 	position.y = 0.75 # TODO: hack it to be same height as player
 
+	$AnimationPlayer.speed_scale = random_speed / min_speed
 
 
 func _on_visible_on_screen_notifier_3d_screen_exited():
