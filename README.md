@@ -18,7 +18,7 @@ I suggest exporting to `./export/html/index.html` and adding `./export/html` to 
 Within Itch configuration
 
 - must set viewport dimensions
-- must enabled "SharedArrayBuffer support — (Experimental) This may break parts of the page or your project. Only enable if you know you need it. Learn more" flag to avoid
+- must enablee "SharedArrayBuffer support — (Experimental) This may break parts of the page or your project. Only enable if you know you need it. Learn more" checkbox ([more info](https://itch.io/t/2025776/experimental-sharedarraybuffer-support)), otherwise, you'll get this error:
   > Error
   > The following features required to run Godot projects on the Web are missing:
   > Cross Origin Isolation - Check web server configuration (send correct headers)
