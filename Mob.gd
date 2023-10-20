@@ -15,9 +15,14 @@ func initialize(start_pos, player_pos):
 	position.y = 50
 	
 	# adjust velocity toward player, with some randomness
+	print("start_pos", start_pos, "player_pos", player_pos)
+	# print("self.rotation (before)", self.rotation)
 	look_at_from_position(start_pos, player_pos, Vector3.UP)
+	# print("self.rotation  (after)", self.rotation)
+	
 	rotate_y(randf_range(-PI/4, PI/4))
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
+	position.y = 0.75 # TODO: hack it to be same height as player
 
 
 

@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal hit
+
 @export var speed = 14
 @export var fall_acceleration = 75
 @export var jump_impulse = 20
@@ -31,11 +33,11 @@ func _physics_process(delta):
 		# if it's a collision with the ground
 		if collision.get_collider() == null:
 			continue
-		
+#
 		if collision.get_collider().is_in_group("mob"):
 			var mob = collision.get_collider()
 			# check that we are colliding from above
-			print("Collision normal:", collision.get_normal(), " ---> UP dot product = ", Vector3.UP.dot(collision.get_normal()))
+			# print("Collision normal:", collision.get_normal(), " ---> UP dot product = ", Vector3.UP.dot(collision.get_normal()))
 			if Vector3.UP.dot(collision.get_normal()) > 0.75: # TODO: was 0.1 in example
 				mob.squash()
 				target_velocity.y = bounce_impulse	
@@ -57,3 +59,10 @@ func _physics_process(delta):
 	velocity = target_velocity
 	move_and_slide()
 	
+
+func die():
+	hit.emit()
+	queue_free()
+
+func _on_mob_detector_body_entered(body):
+	die()

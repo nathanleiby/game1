@@ -17,3 +17,6 @@ func _on_timer_timeout():
 	
 	add_child(mob)
 	
+
+func _on_player_hit():	
+	$MobTimer.stop()

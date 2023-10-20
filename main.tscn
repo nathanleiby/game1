@@ -17,10 +17,10 @@ albedo_color = Color(0.666667, 0.345098, 0, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_den42"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -12.9896, 0, 14.5307, 0, 0, 0, 0, 0, 0, -13.0996, 0, -14.7509, 0, 0, 0, 0, 0, 0, 14.7509, 0, -14.6408, 0, 0, 0, 0, 0, 0, 14.8609, 0, 14.5307, 0, 0, 0, 0, 0, 0, -12.9896, 0, 14.5307, 0, 0, 0, 0, 0, 0, -12.9569, 0.890455, 14.1673),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -12.9896, 0, 14.5307, 0, 0, 0, 0, 0, 0, -13.0996, 0, -14.7509, 0, 0, 0, 0, 0, 0, 14.7509, 0, -14.6408, 0, 0, 0, 0, 0, 0, 14.8609, 0, 14.5307, 0, 0, 0, 0, 0, 0, -12.9896, 0, 14.5307),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
-point_count = 6
+point_count = 5
 
 [node name="Main" type="Node"]
 script = ExtResource("1_cn7dx")
@@ -42,6 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 0.0551245, 0.998479, 0, -0.998479, 0.0551245
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_m10mj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.78694, 0)
 
 [node name="CameraPivot" type="Marker3D" parent="."]
 transform = Transform3D(1, -5.95416e-16, 2.4663e-16, 2.4663e-16, 0.707107, 0.707107, -5.95416e-16, -0.707107, 0.707107, 2.08165e-12, 20, 19)
@@ -76,13 +77,15 @@ mesh = SubResource("CylinderMesh_k8d6t")
 surface_material_override/0 = SubResource("StandardMaterial3D_k64g3")
 
 [node name="SpawnPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 10, 2.08165e-12)
 curve = SubResource("Curve3D_den42")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(0.999993, 0, 0.00375949, 0, 1, 0, -0.00375949, 0, 0.999993, -12.9896, 0, 14.5307)
+transform = Transform3D(0.999992, 0, 0.00375949, 0, 1, 0, -0.00375949, 0, 0.999992, -12.9896, 0, 14.5307)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_timer_timeout"]
