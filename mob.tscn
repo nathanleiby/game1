@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cej0wkhmw26eb"]
 
 [ext_resource type="Script" path="res://Mob.gd" id="1_20nd0"]
-[ext_resource type="PackedScene" uid="uid://c2wpmjsncbjh3" path="res://art/mob.glb" id="2_lbj6u"]
+[ext_resource type="PackedScene" uid="uid://bifb3fm414uqq" path="res://art/mob.glb" id="2_lbj6u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xn312"]
 size = Vector3(2.14287, 0.646149, 2.02689)
