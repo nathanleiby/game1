@@ -26,6 +26,12 @@ func initialize(start_pos, player_pos):
 func _on_visible_on_screen_notifier_3d_screen_exited():
 	queue_free()
 
+var is_squashed = false
 func squash():
+	# ... should handle a race condition of multiple collisions if this is called within a physics process tick
+	if is_squashed:
+		return
+		
+	is_squashed = true
 	squashed.emit()
 	queue_free()

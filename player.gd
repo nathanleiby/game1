@@ -52,9 +52,10 @@ func _physics_process(delta):
 		if collision.get_collider().is_in_group("mob"):
 			var mob = collision.get_collider()
 			# check that we are colliding from above
-			if Vector3.UP.dot(collision.get_normal()) > 0.75: # TODO: was 0.1 in example
+			if Vector3.UP.dot(collision.get_normal()) > 0.2: # TODO: was 0.1 in example
 				mob.squash()
 				target_velocity.y = bounce_impulse	
+			# TODO: are we getting multiple collisions within a physics tick?
 			
 	
 	# Moving

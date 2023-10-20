@@ -16,7 +16,8 @@ func _on_timer_timeout():
 	mob.initialize(mob_spawn_location.position, player_position)
 	
 	add_child(mob)
-	
+
+	mob.squashed.connect($UserInterface/ScoreLabel._on_mob_squashed.bind())	
 
 func _on_player_hit():	
 	$MobTimer.stop()
